@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  cesm-lab:
+#    user: root
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cesm-container
+    volumes:
+      - ./data:/home/cesm_user/data
+      - ./test.sh:/home/cesm_user/test.sh
+    ports:
+      - "8888:8888"
+    command: /bin/bash /home/cesm_user/test.sh
